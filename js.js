@@ -658,6 +658,20 @@ function setupEventListeners() {
         });
     }
 }
+// Evento para chamar a função setupEventListeners após o botão gerar código HTML ser clicado
+document.getElementById('cadastropj').addEventListener('click', function() {
+    // Código para gerar o HTML
+
+    // Após a geração do HTML, chame a função para configurar os ouvintes de eventos
+    setupEventListeners();
+});
+// Evento para chamar a função setupEventListeners após o botão gerar código HTML ser clicado
+document.getElementById('cadastropf').addEventListener('click', function() {
+    // Código para gerar o HTML
+
+    // Após a geração do HTML, chame a função para configurar os ouvintes de eventos
+    setupEventListeners();
+});
 function handleFormaPagamentoChange() {
     var formaPagamentoCheckboxes = document.getElementsByName("formaDePagamento");
     var daccDiv = document.getElementById("dacc");
