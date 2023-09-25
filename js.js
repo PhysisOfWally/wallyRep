@@ -629,31 +629,35 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     }
 });
-document.addEventListener('DOMContentLoaded', function() {
-    var UFInput = document.getElementById('UF'); // Supondo que você tenha um campo de input para selecionar o estado
-
+// Função para adicionar os ouvintes de eventos após a geração do código HTML
+function setupEventListeners() {
+    var UFInput = document.getElementById('UF');
     var confirmActionBtn = document.getElementById('confirmAction');
     var confirmModal = document.getElementById('confirmModal');
 
     if (UFInput && confirmActionBtn && confirmModal) {
-    UFInput.addEventListener('change', function() {
-        var selectedUF = UFInput.value;
+        UFInput.addEventListener('input', function() {
+            var selectedUF = UFInput.value;
 
-        if (selectedUF !== 'RJ' && selectedUF !== 'MG' && selectedUF !== 'ES' && selectedUF !== 'SP') {
-        confirmModal.classList.add('show');
-        confirmModal.style.display = 'block';
-        document.body.classList.add('modal-open');
-        }
-    });
+            if (selectedUF !== 'RJ' && selectedUF !== 'MG' && selectedUF !== 'ES' && selectedUF !== 'SP') {
+                confirmModal.classList.add('show');
+                confirmModal.style.display = 'block';
+                document.body.classList.add('modal-open');
+            } else {
+                confirmModal.classList.remove('show');
+                confirmModal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            }
+        });
 
-    confirmActionBtn.addEventListener('click', function() {
-        // Ação que será executada após a confirmação (caso necessário)
-        confirmModal.classList.remove('show');
-        confirmModal.style.display = 'none';
-        document.body.classList.remove('modal-open');
-    });
+        confirmActionBtn.addEventListener('click', function() {
+            // Ação que será executada após a confirmação (caso necessário)
+            confirmModal.classList.remove('show');
+            confirmModal.style.display = 'none';
+            document.body.classList.remove('modal-open');
+        });
     }
-});
+}
 function handleFormaPagamentoChange() {
     var formaPagamentoCheckboxes = document.getElementsByName("formaDePagamento");
     var daccDiv = document.getElementById("dacc");
