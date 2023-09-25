@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css.css">
+    <script src="js.js"></script>
+    <title>Cadastro PF</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Cadastro de Clientes PF</h1>
+        <form id="cpfForm" method="POST">
+            <div class="form-group row">
+                <div id="div-cpf" class="col-md-4">
+                    <label for="cpfSocio">CPF do Sócio</label>
+                    <input type="text" class="form-control custom-input" id="cpfSocio" name="cpfSocio" onblur="onblurCPF()" oninput="formatCPFInput(this)" required>
+                    <div class="invalid-feedback">
+                    Verifique o CPF informado.
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <label for="nomeSocio">Nome Completo do Sócio</label>
+                    <input type="text" class="form-control custom-input" id="nomeSocio" name="nomeSocio" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="rg">RG</label>
+                    <input type="text" class="form-control" id="rg" name="rg" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="dtNascimento">Data de Nascimento</label>
+                    <input type="date" class="form-control custom-input" id="dtNascimento" name="dtNascimento" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="nomeMae">Nome da Mãe</label>
+                <input type="text" class="form-control custom-input" id="nomeMae" name="nomeMae" required>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label for="cep">CEP</label>
+                    <input type="text" class="form-control" id="cep" name="cep" onblur="cepOnblur(this)" maxlength="9" onkeyup="handleZipCode(event)" required>
+                    <div class="valid-feedback">
+                    CEP ok!
+                    </div>
+                    <div class="invalid-feedback">
+                    Verifique o CEP informado.
+                    </div>
+                </div>
+                    <div class="col-md-4">
+                    <label for="logradouro">Logradouro</label>
+                    <input type="text" class="form-control" id="logradouro" name="logradouro" required>
+                    </div>
+                    <div class="col-md-4">
+                    <label for="numero">Número de Fachada</label>
+                    <input type="text" class="form-control" id="numero" name="numero" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-6">
+                <label for="bairro">Bairro</label>
+                <input type="text" class="form-control custom-input" id="bairro" name="bairro" required>
+                </div>
+                <div class="col-md-6">
+                <label for="complemento">Complemento</label>
+                <input type="text" class="form-control" id="complemento" name="complemento">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-8">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" class="form-control" id="cidade" name="cidade" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="UF">Estado</label>
+                    <select id="UF" name="UF" class="custom-select" required>
+                    <option value="">Selecione</option>
+                    <option value="AC">AC</option>
+                    <option value="AL">AL</option>
+                    <option value="AP">AP</option>
+                    <option value="AM">AM</option>
+                    <option value="BA">BA</option>
+                    <option value="CE">CE</option>
+                    <option value="DF">DF</option>
+                    <option value="ES">ES</option>
+                    <option value="GO">GO</option>
+                    <option value="MA">MA</option>
+                    <option value="MS">MS</option>
+                    <option value="MT">MT</option>
+                    <option value="MG">MG</option>
+                    <option value="PA">PA</option>
+                    <option value="PB">PB</option>
+                    <option value="PR">PR</option>
+                    <option value="PE">PE</option>
+                    <option value="PI">PI</option>
+                    <option value="RJ">RJ</option>
+                    <option value="RN">RN</option>
+                    <option value="RS">RS</option>
+                    <option value="RO">RO</option>
+                    <option value="RR">RR</option>
+                    <option value="SC">SC</option>
+                    <option value="SP">SP</option>
+                    <option value="SE">SE</option>
+                    <option value="TO">TO</option>
+                </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-8">
+                <label for="pontoReferencia">Ponto de Referência</label>
+                <input type="text" class="form-control custom-input" id="pontoReferencia" name="pontoReferencia" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="viabilidade">Viabilidade?</label>
+                    <select id="viabilidade" name="viabilidade" class="custom-select" required>
+                        <option value="">Selecione</option>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <h4>Dados do cliente</h4>
+            </div>
+            <!-- Additional fields for the Contato section -->
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label for="email">E-mail</label>
+                    <input type="email" class="form-control custom-input" id="email" name="email" required onblur="validateEmailOnBlur(this)">
+                    <div class="invalid-feedback">
+                        Verifique o e-mail informado.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+            <div id="tel" class="col-md-6">
+                <label for="telefone">Telefone para Contato</label>
+                <input type="tel" class="form-control custom-input" id="telefone" name="telefone" required onblur="validatePhoneOnBlur(this)" placeholder="Ex.: (21) 99189-0062">
+                <div class="invalid-feedback">
+                Verifique o telefone informado.
+                </div>
+            </div>
+            <div id="whats" class="col-md-6">
+                <label for="whatsapp">WhatsApp para Agendamento</label>
+                <input type="tel" class="form-control custom-input" id="whatsapp" name="whatsapp" required onblur="validatePhoneOnBlur(this)" placeholder="Ex.: (21) 99189-0062">
+                <div class="invalid-feedback" >
+                Verifique o número de WhatsApp informado.
+                </div>
+            </div>
+            </div>
+            <!-- Additional fields for the Plano section -->
+            <div id="products-Fibra">
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label for="plano">Fibra óptica</label>
+                        <select id="plano" name="plano" class="custom-select" required onchange="valorVenda()">
+                            <option value="">Selecione</option>
+                            <option value="200 MB">200 MB</option>
+                            <option value="400 MB">400 MB</option>
+                            <option value="500 MB">500 MB</option>
+                            <option value="600 MB">600 MB</option>
+                            <option value="700 MB">700 MB</option>
+                            <option value="1 GB">1 GB</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="valor">Valor</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">$</span>
+                            <input type="text" class="form-control" id="valor" placeholder="0,00" required disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Additional fields for the Conta Corrente section -->
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label for="Boleto">Forma de Pagamento</label><br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="formaDePagamento" id="Boleto" onclick="uncheckOthers(this)" value="boleto" checked onchange="handleFormaPagamentoChange()">
+                        <label class="form-check-label" for="Boleto">
+                        Boleto
+                        </label>
+                </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="formaDePagamento" id="ContaCorrente" onclick="uncheckOthers(this)" value="contaCorrente" onchange="handleFormaPagamentoChange()">
+                        <label class="form-check-label" for="ContaCorrente">
+                        Conta Corrente
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="vencimento">Vencimento</label>
+                    <select id="vencimento" name="vencimento" class="custom-select" required>
+                        <option value="">Selecione</option>
+                        <option value="10">2</option>
+                        <option value="15">7</option>
+                        <option value="20">11</option>
+                        <option value="20">16</option>
+                        <option value="20">20</option>
+                        <option value="20">26</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="vendedor">Vendedor</label>
+                    <select id="vendedor" name="vendedor" class="custom-select" required>
+                        <option value="">Selecione</option>
+                        <option value="MARIANE">MARIANE</option>
+                        <option value="ANDRE">ANDRE</option>
+                        <option value="VICTOR">VICTOR</option>
+                        <option value="FABRICIO">FABRICIO</option>
+                        <option value="CLARA">CLARA</option>
+                        <option value="MILENA">MILENA</option>
+                        <option value="DAYANE">DAYANE</option>
+                        <option value="THAYNARA">THAYNARA</option>
+                        <option value="JEAN">JEAN</option>
+                    </select>
+                </div>
+            </div>
+            <div id="dacc">
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label for="banco">Banco</label>
+                        <select id="banco" name="banco" class="custom-select">
+                        <option value="">Selecione</option>
+                        <option value="BANCO DO BRASIL SA">BANCO DO BRASIL S.A.</option>            
+                        <option value="BANCO SANTANDER">BANCO SANTANDER</option>
+                        <option value="CAIXA ECONOMICA FEDERAL">CAIXA ECONÔMICA FEDERAL</option>
+                        <option value="BANCO BRADESCO SA">BANCO BRADESCO S.A.</option>
+                        <option value="BANCO ITAU SA">BANCO ITAU S.A.</option>
+                        <option value="BANCO NUBANK">BANCO NUBANK</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="agencia">Agência</label>
+                        <input type="text" class="form-control custom-input" id="agencia" name="agencia">
+                    </div>
+                    <div class="col-md-5">
+                        <label for="conta">Conta Corrente</label>
+                        <input type="text" class="form-control custom-input" id="conta" name="conta">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-6">
+                <button type="submit" onclick="submitCpfForm()" class="btn btn-primary">Enviar</button>
+                <button type="button" class="btn btn-secondary ml-2" onclick="clearFormFieldsCPF()">Limpar</button>
+                </div>
+            </div>
+            <!-- Additional fields for the Plano section -->
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <div id="loadingIcon" class="d-none">
+                    <div class="wrapper">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="shadow"></div>
+                        <div class="shadow"></div>
+                        <div class="shadow"></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <div id="rvcnpj"></div>
+                </div>
+            </div>
+            <div class="form-group row">
+            <div class="col-md-6">
+                <div id="sucesso" class="alert alert-success" style="display:none" role="alert">
+                Formulário enviado com sucesso!
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="senderro" class="alert alert-danger" style="display:none" role="alert">
+                    Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="confirmModalLabel">Confirmação de Ação</h5>
+            </div>
+            <div class="modal-body">
+              <P>Confirme que o pedido é para um estado válido?</P><br>
+              <P>(RJ | MG | ES | SP)</P>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="confirmAction">Confirmar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+</body>
+</html>
