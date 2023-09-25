@@ -629,49 +629,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     }
 });
-// Função para adicionar os ouvintes de eventos após a geração do código HTML
-function setupEventListeners() {
-    var UFInput = document.getElementById('UF');
-    var confirmActionBtn = document.getElementById('confirmAction');
-    var confirmModal = document.getElementById('confirmModal');
 
-    if (UFInput && confirmActionBtn && confirmModal) {
-        UFInput.addEventListener('input', function() {
-            var selectedUF = UFInput.value;
+var select = document.getElementById('UF');
 
-            if (selectedUF !== 'RJ' && selectedUF !== 'MG' && selectedUF !== 'ES' && selectedUF !== 'SP') {
-                confirmModal.classList.add('show');
-                confirmModal.style.display = 'block';
-                document.body.classList.add('modal-open');
-            } else {
-                confirmModal.classList.remove('show');
-                confirmModal.style.display = 'none';
-                document.body.classList.remove('modal-open');
-            }
-        });
+select.addEventListener('change', function() {
+    var selectedUF = select.value;
 
-        confirmActionBtn.addEventListener('click', function() {
-            // Ação que será executada após a confirmação (caso necessário)
-            confirmModal.classList.remove('show');
-            confirmModal.style.display = 'none';
-            document.body.classList.remove('modal-open');
-        });
+    if (selectedUF !== 'RJ' && selectedUF !== 'MG' && selectedUF !== 'ES' && selectedUF !== 'SP') {
+        confirmModal.classList.add('show');
+        confirmModal.style.display = 'block';
+        document.body.classList.add('modal-open');
+    } else {
+        confirmModal.classList.remove('show');
+        confirmModal.style.display = 'none';
+        document.body.classList.remove('modal-open');
     }
-}
-// Evento para chamar a função setupEventListeners após o botão gerar código HTML ser clicado
-document.getElementById('cadastropj').addEventListener('click', function() {
-    // Código para gerar o HTML
-
-    // Após a geração do HTML, chame a função para configurar os ouvintes de eventos
-    setupEventListeners();
+        confirmActionBtn.addEventListener('click', function() {
+        // Ação que será executada após a confirmação (caso necessário)
+        confirmModal.classList.remove('show');
+        confirmModal.style.display = 'none';
+        document.body.classList.remove('modal-open');
+    });
 });
-// Evento para chamar a função setupEventListeners após o botão gerar código HTML ser clicado
-document.getElementById('cadastropf').addEventListener('click', function() {
-    // Código para gerar o HTML
 
-    // Após a geração do HTML, chame a função para configurar os ouvintes de eventos
-    setupEventListeners();
-});
 function handleFormaPagamentoChange() {
     var formaPagamentoCheckboxes = document.getElementsByName("formaDePagamento");
     var daccDiv = document.getElementById("dacc");
