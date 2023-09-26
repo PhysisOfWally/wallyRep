@@ -673,8 +673,9 @@ function handleFormaPagamentoChange() {
     }
     }
 }
-document.addEventListener("DOMContentLoaded", () => {
-    var combate1 = [
+
+function valorVenda(){
+        var combate1 = [
         "CACHOEIRO DE ITAPEMIRIM",
         "CARIACICA",
         "SERRA",
@@ -782,9 +783,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "RIO DE JANEIRO",
         "JACUECANGA",
         "MAMBUCABA"];
-});
-
-function valorVenda(){
+    
     let valor = 0;
     var cidade = document.getElementById('cidade').value;
     var plano = document.getElementById('plano').value;
